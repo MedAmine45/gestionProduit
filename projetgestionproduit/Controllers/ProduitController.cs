@@ -131,6 +131,7 @@ namespace projetgestionproduit.Controllers
                                                .Take(5)
                                                .ToList();
 
+
             Produits(0, 5, "");
             return View("Produits",newlist);
 

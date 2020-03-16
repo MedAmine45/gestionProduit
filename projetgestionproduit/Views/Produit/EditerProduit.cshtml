@@ -31,14 +31,6 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label">Catégorie:</label>
-                    @*<select name="CategorieID" class="form-control">
-                            @{
-                                foreach (var c in ViewBag.Categories)
-                                {
-                                    <option value="@c.CategorieID">@c.NomCategorie</option>
-                                }
-                            }
-                        </select>*@
                     @Html.DropDownList("CategorieID", (SelectList)ViewBag.Categories, new { @class = "form-control" })
 
                 </div>
