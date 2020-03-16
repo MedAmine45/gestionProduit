@@ -1,0 +1,95 @@
+﻿@model IEnumerable<projetgestionproduit.Models.Produit>
+
+@{
+    ViewBag.Title = "Produits";
+}
+
+
+
+<h2>Produits</h2>
+
+@if (TempData["message"] != null)
+{
+<div style="color:rgb(3, 0, 255);">
+    @Html.Raw(TempData["message"])
+</div>  
+}
+<div class="container spacer">
+    <div class="panel panel-primary">
+        <div class=" panel-heading">Liste des produits</div>
+        <div class="panel-body">
+            <div class="container">
+                @using (Html.BeginForm("Produits", "Produit", FormMethod.Get))
+                {
+                    <label>Mot Clé:</label>
+                     <input type="text" name="motCle"  value="@ViewBag.motCle"/>
+                     <button type="submit" class="btn btn-primary">Chercher </button>
+                }
+            </div>
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>DES</th>
+                    <th>Prix</th>
+                    <th>Quantite</th>
+                    <th>Categorie</th>
+                    <th>Actions</th>
+                </tr>
+                @{
+                    foreach (var p in Model)
+                    {
+                <tr>
+                    <td>@p.ProduitID</td>
+                    <td>@p.Designation</td>
+                    <td>@p.Prix</td>
+                    <td>@p.Quantite</td>
+                    <td>@p.Categorie.NomCategorie</td>
+                    <td>
+                        @Html.ActionLink("Modifier", "EditerProduit", new { ProduitID = p.ProduitID })|
+                        @Html.ActionLink("supprimer", "DeleteProduit", new { ProduitID = p.ProduitID }, new { onclick = "return confirm('Êtes-vous sûr que vous voulez supprimer ?');" })
+                    </td>
+                    
+                </tr>
+                    }
+                }
+            </table>
+
+            <div>
+                <ul class="nav nav-pills">
+                    @{
+                        for (int i = 0; i < ViewBag.totalPages; i++)
+                        {
+                            string className = " ";
+                            if (i == ViewBag.currentPage)
+                            {
+                                className = "active";
+                            }
+                            <li class="@className">
+                                @Html.ActionLink(
+                                                      Convert.ToString(i),
+                                                      "Produits",
+                                                      "Produit",
+                                                      routeValues: new {
+                                                          page= Convert.ToString(i),
+                                                          motCle = ViewBag.motCle
+                                                      },
+                                                      htmlAttributes: null
+                                                      )
+
+                            </li>
+                        }
+                    }
+
+                </ul>
+            </div>
+            <br />
+            <div>
+                @Html.ActionLink("Nouveau Produit", "FormProduit", "Produit", null, new { @class = "btn btn-primary" })
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
