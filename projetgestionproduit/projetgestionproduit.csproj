@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategorieController.cs" />
     <Compile Include="Controllers\ProduitController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -156,10 +157,13 @@
     <Compile Include="Migrations\202002160053509_decimalMortality.designer.cs">
       <DependentUpon>202002160053509_decimalMortality.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003221223276_supprimerMortality.cs" />
+    <Compile Include="Migrations\202003221223276_supprimerMortality.designer.cs">
+      <DependentUpon>202003221223276_supprimerMortality.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categorie.cs" />
     <Compile Include="Models\Context.cs" />
-    <Compile Include="Models\Mortality.cs" />
     <Compile Include="Models\Produit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -172,6 +176,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Produit\FormProduit.cshtml" />
     <Content Include="Views\Produit\EditerProduit.cshtml" />
+    <Content Include="Views\Categorie\Categories.cshtml" />
+    <Content Include="Views\Categorie\FormCategorie.cshtml" />
+    <Content Include="Views\Categorie\EditerCategorie.cshtml" />
+    <Content Include="Views\Categorie\DetailsCategorie.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -203,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002160053509_decimalMortality.resx">
       <DependentUpon>202002160053509_decimalMortality.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003221223276_supprimerMortality.resx">
+      <DependentUpon>202003221223276_supprimerMortality.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

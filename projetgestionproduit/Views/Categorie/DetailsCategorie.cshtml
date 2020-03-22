@@ -1,0 +1,84 @@
+﻿@model projetgestionproduit.Models.Categorie
+
+@{
+    ViewBag.Title = "DetailsCategorie";
+}
+
+<h2>DetailsCategorie</h2>
+
+<div class="container spacer">
+    <div class="panel panel-primary">
+        <div class=" panel-heading">Liste des produits</div>
+        <div class="panel-body">
+            @*<div class="container">
+                @using (Html.BeginForm("Produits", "Produit", FormMethod.Get))
+                {
+                    <label>Mot Clé:</label>
+                    <input type="text" name="motCle" value="@ViewBag.motCle" />
+                    <button type="submit" class="btn btn-primary">Chercher </button>
+                }
+            </div>*@
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>DES</th>
+                    <th>Prix</th>
+                    <th>Quantite</th>
+                    <th>Categorie</th>
+                    
+                </tr>
+                @{
+                    foreach (var p in Model.produits)
+                    {
+                        <tr>
+                            <td>@p.ProduitID</td>
+                            <td>@p.Designation</td>
+                            <td>@p.Prix</td>
+                            <td>@p.Quantite</td>
+                            <td>@p.Categorie.NomCategorie</td>
+                           
+
+                        </tr>
+                    }
+                }
+            </table>
+
+            @*<div>
+                <ul class="nav nav-pills">
+                    @{
+                        for (int i = 0; i < ViewBag.totalPages; i++)
+                        {
+                            string className = " ";
+                            if (i == ViewBag.currentPage)
+                            {
+                                className = "active";
+                            }
+                            <li class="@className">
+                                @Html.ActionLink(
+                                                      Convert.ToString(i),
+                                                      "Produits",
+                                                      "Produit",
+                                                      routeValues: new {
+                                                          page= Convert.ToString(i),
+                                                          motCle = ViewBag.motCle
+                                                      },
+                                                      htmlAttributes: null
+                                                      )
+
+                            </li>
+                        }
+                    }
+
+                </ul>
+            </div>*@
+            @*<br />
+            <div>
+                @Html.ActionLink("Nouveau Produit", "FormProduit", "Produit", null, new { @class = "btn btn-primary" })
+            </div>*@
+
+        </div>
+    </div>
+
+
+</div>
+

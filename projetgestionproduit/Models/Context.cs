@@ -14,7 +14,6 @@ namespace projetgestionproduit.Models
 
         public DbSet<Produit> Produits { get; set; }
         public DbSet<Categorie> Categories { get; set; }
-        public DbSet<Mortality> Mortalitys { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

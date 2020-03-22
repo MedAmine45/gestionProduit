@@ -94,7 +94,7 @@ namespace projetgestionproduit.Controllers
             return View("EditerProduit", produit);
         }
         [HttpPost]
-        public ActionResult EditerProduit(Produit produit, int ProduitID)
+        public ActionResult EditerProduit(Produit produit)
         {
             var categories = context.Categories.Select(c => new {
                 CategorieID = c.CategorieID,
@@ -104,7 +104,7 @@ namespace projetgestionproduit.Controllers
             if (ModelState.IsValid)
             {
 
-                Produit prod = context.Produits.Where(p => p.ProduitID == ProduitID).FirstOrDefault();
+                Produit prod = context.Produits.Where(p => p.ProduitID == produit.ProduitID).FirstOrDefault();
                 prod.Designation = produit.Designation;
                 prod.Quantite = produit.Quantite;
                 prod.Prix = produit.Prix;

@@ -1,0 +1,34 @@
+﻿@model projetgestionproduit.Models.Categorie
+
+@{
+    ViewBag.Title = "Saisie d'un Categorie";
+}
+
+<br />
+<div class="container col-md-8 col-md-offset-2">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Saisie d'un categorie</div>
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveCategorie", "Categorie", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label class="control-label">Nom Categorie:</label>
+                    @Html.TextBoxFor(c => c.NomCategorie , new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.NomCategorie, "", new { @class = "text-danger" })
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary"> Save</button>
+                    @if (TempData["message"] != null)
+                    {
+                        <div style="color:rgb(255, 0, 0);">
+                            @Html.Raw(TempData["message"])
+                        </div>
+                    }
+                    @*@Html.ActionLink("Save", "SaveProduit",null, new { @class = "btn btn-primary" })*@
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
